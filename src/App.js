@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import Layout from "./components/layout"
+import HomeBanner from "./components/HomePage/HomeBanner"
+import HomeContent from "./components/HomePage/HomeContent"
 
-function App() {
+// Context
+import {
+  useGlobalStateContext,
+  useGlobalDispatchContext,
+} from "./context/globalContext"
+import HomeFeatured from "./components/HomePage/HomeFeatured"
+import HomeAbout from "./components/HomePage/HomeAbout"
+
+const App = () => {
+  const { cursorStyles } = useGlobalStateContext()
+  const dispatch = useGlobalDispatchContext()
+
+  const onCursor = (cursorType) => {
+    cursorType = (cursorStyles.includes(cursorType) && cursorType) || false
+    dispatch({
+      type: "CURSOR_TYPE",
+      cursorType: cursorType,
+    })
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <Layout>
+        <HomeBanner onCursor={onCursor} />
+        <HomeContent />
+        <HomeFeatured onCursor={onCursor} />
+        <HomeAbout onCursor={onCursor} />
+      </Layout>
+  )
 }
 
-export default App;
+export default App
