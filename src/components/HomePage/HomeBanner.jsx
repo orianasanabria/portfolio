@@ -61,7 +61,7 @@ const HomeBanner = ({ onCursor }) => {
         renderingCtx.drawImage(drawingElement, 0, 0)
       }
     })
-  }, [currentTheme])
+  }, [currentTheme, size.height, size.width])
 
   const parent = {
     animate: {
@@ -105,6 +105,7 @@ const HomeBanner = ({ onCursor }) => {
           height="100%"
           width="100%"
           src={require("../../assets/img/bg1.gif")}
+          alt="background gif"
         />
       </Video>
       <Canvas

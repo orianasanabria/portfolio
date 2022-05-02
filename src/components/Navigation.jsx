@@ -152,6 +152,7 @@ const Navigation = ({ toggleMenu, setToggleMenu, onCursor }) => {
                           require(`../assets/img/${revealImage.image}`)
                             
                         }
+                        alt="project image"
                         initial={{ opacity: 0 }}
                         exit={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
