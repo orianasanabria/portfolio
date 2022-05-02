@@ -12,9 +12,11 @@ import {
 
 import { accordionIds } from "../../data/dataHome"
 import { useGlobalStateContext } from "../../context/globalContext"
+import { useIsSmall } from "../../hooks/useMediaQuery"
 
 const HomeAbout = ({ onCursor }) => {
   const [expanded, setExpanded] = useState(0)
+  const isSmall = useIsSmall()
 
   const animation = useAnimation()
   const [aboutRef, inView] = useInView({
@@ -23,10 +25,10 @@ const HomeAbout = ({ onCursor }) => {
   })
 
   useEffect(() => {
-    if (inView) {
+    if (inView || isSmall) {
       animation.start("visible")
     }
-  }, [animation, inView])
+  }, [animation, inView, isSmall])
 
   return (
     <motion.div

@@ -8,6 +8,7 @@ import {
   Content,
   ContentTitle,
 } from "../../styles/homeStyles"
+import { useIsSmall } from "../../hooks/useMediaQuery"
 
 const HomeContent = () => {
   const animation = useAnimation()
@@ -15,12 +16,13 @@ const HomeContent = () => {
     triggerOnce: true,
     rootMargin: "-300px",
   })
+  const isSmall = useIsSmall()
 
   useEffect(() => {
-    if (inView) {
+    if (inView || isSmall) {
       animation.start("visible")
     }
-  }, [animation, inView])
+  }, [animation, inView, isSmall])
 
   return (
     <HomeContentSection

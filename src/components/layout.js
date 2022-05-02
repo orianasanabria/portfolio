@@ -29,9 +29,11 @@ const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
+    background: ${props => props.theme.background};
+    overflow-x: hidden;
     &::-webkit-scrollbar {
-    display: none;
-  }
+      display: none;
+    }
   }
 
   body {
