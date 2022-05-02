@@ -3,8 +3,9 @@ import { motion, useAnimation } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { Container, Flex } from "../../styles/globalStyles"
 import {
+  HomeAboutSection,
   About,
-  Services,
+  Stack,
   AccordionHeader,
   AccordionIcon,
   AccordionContent,
@@ -31,8 +32,7 @@ const HomeAbout = ({ onCursor }) => {
   }, [animation, inView, isSmall])
 
   return (
-    <motion.div
-      className="home-about-section"
+    <HomeAboutSection
       ref={aboutRef}
       animate={animation}
       initial="hidden"
@@ -65,7 +65,7 @@ const HomeAbout = ({ onCursor }) => {
               and digital experiences at PropulsoW for a variety of clients.
             </p>
           </About>
-          <Services>
+          <Stack>
             <h3>Stack</h3>
             {accordionIds.map((details, index) => (
               <Accordion
@@ -76,10 +76,10 @@ const HomeAbout = ({ onCursor }) => {
                 onCursor={onCursor}
               />
             ))}
-          </Services>
+          </Stack>
         </Flex>
       </Container>
-    </motion.div>
+    </HomeAboutSection>
   )
 }
 

@@ -10,7 +10,7 @@ export const Container = styled.div`
     width: 80%;
   }
 
-  ${props =>
+  ${(props) =>
     props.fluid &&
     css`
       padding: 0;
@@ -23,7 +23,7 @@ export const Flex = styled.div`
   display: flex;
   align-items: center;
 
-  ${props =>
+  ${(props) =>
     props.responsiveDirection &&
     css`
       flex-direction: column;
@@ -32,25 +32,25 @@ export const Flex = styled.div`
       }
     `}
 
-  ${props =>
+  ${(props) =>
     props.spaceBetween &&
     css`
       justify-content: space-between;
     `}
 
-  ${props =>
+  ${(props) =>
     props.flexEnd &&
     css`
       justify-content: flex-end;
     `}
 
-	${props =>
+	${(props) =>
     props.alignTop &&
     css`
       align-items: flex-start;
     `}
 
-	${props =>
+	${(props) =>
     props.noHeight &&
     css`
       height: 0;
@@ -63,7 +63,7 @@ export const Cursor = styled.div`
   left: 0;
   width: 32px;
   height: 32px;
-  background: ${props => props.theme.accent};
+  background: ${(props) => props.theme.accent};
   border-radius: 100%;
   transform: translate(-50%, -50%);
   transition: all 0.1s ease-in-out;
@@ -73,39 +73,35 @@ export const Cursor = styled.div`
   z-index: 999;
   &.pointer {
     background: transparent !important;
-    border: 4px solid ${props => props.theme.text} !important;
+    border: 4px solid ${(props) => props.theme.text} !important;
   }
   &.hovered {
     background: transparent;
     width: 56px;
     height: 56px;
-    border: 4px solid ${props => props.theme.accent};
+    border: 4px solid ${(props) => props.theme.accent};
   }
   &.nav-open {
-    background: ${props => props.theme.text};
+    background: ${(props) => props.theme.text};
   }
   &.locked {
     background: transparent;
     width: 56px;
     height: 56px;
-    border: 4px solid ${props => props.theme.background};
-    left: ${props => props.theme.left} !important;
-    top: ${props => props.theme.top} !important;
+    border: 4px solid ${(props) => props.theme.background};
+    left: ${(props) => props.theme.left} !important;
+    top: ${(props) => props.theme.top} !important;
   }
 `
 
 export const ProjectBtn = styled.div`
   position: fixed;
-  bottom: 1rem;
-  right: 1.5rem;
+  bottom: 0.5rem;
+  right: 0.5rem;
   .text {
-    margin-top: 2rem;
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    grid-template-columns: max-content max-content;
+    display: none;
     h2 {
-      color: ${props => props.theme.text};
+      color: ${(props) => props.theme.text};
       font-weight: 400;
       font-size: 1.2rem;
       margin: 0;
@@ -114,6 +110,18 @@ export const ProjectBtn = styled.div`
     }
     .rotate {
       transform: rotate(180deg);
+    }
+  }
+  @media only screen and (min-width: 991px) {
+    bottom: 1rem;
+    right: 1.5rem;
+    .text {
+      display: block;
+      margin-top: 2rem;
+      display: grid;
+      justify-content: center;
+      align-content: center;
+      grid-template-columns: max-content max-content;
     }
   }
 `

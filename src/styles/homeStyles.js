@@ -2,11 +2,10 @@ import styled from "styled-components"
 import { motion } from "framer-motion"
 
 export const Banner = styled.div`
-  background: ${props => props.theme.background};
+  background: ${(props) => props.theme.background};
   height: 100vh;
   width: 100%;
   position: relative;
-  margin-bottom: 15%;
 `
 
 export const Video = styled.div`
@@ -21,6 +20,7 @@ export const Canvas = styled.canvas`
   top: 0;
   left: 0;
   height: 100%;
+  width: 100%;
   display: block;
 `
 export const BannerGrid = styled(motion.div)`
@@ -41,7 +41,7 @@ export const BannerGrid = styled(motion.div)`
 export const BannerTitle = styled(motion.h1)`
   grid-column: 2/6;
   grid-row: 2/3;
-  color: ${props => props.theme.text};
+  color: ${(props) => props.theme.text};
   @media only screen and (min-width: 768px) {
     grid-row: 4;
     grid-column: 2/8;
@@ -71,21 +71,21 @@ export const BannerText = styled(motion.p)`
   grid-row: 4/5;
   line-height: 1.3;
   font-weight: 600;
-  color: ${props => props.theme.text};
+  color: ${(props) => props.theme.text};
   grid-column: 11/12;
 `
 export const ScrollArrow = styled(motion.span)`
   grid-column: 2/3;
   grid-row: 5/6;
   svg path {
-    fill: ${props => props.theme.text};
+    fill: ${(props) => props.theme.text};
   }
 `
 
 // Content
 
 export const HomeContentSection = styled(motion.div)`
-  margin-bottom: 15%;
+  margin: 15vh 0;
   @media only screen and (min-width: 991px) {
     margin-left: 124px;
   }
@@ -96,7 +96,7 @@ export const ContentTitle = styled.div`
     width: fit-content;
     position: relative;
     margin-bottom: 0.5rem;
-    color: ${props => props.theme.text};
+    color: ${(props) => props.theme.text};
     opacity: 0.4;
     font-size: 3.8rem;
     cursor: pointer;
@@ -110,8 +110,8 @@ export const ContentTitle = styled.div`
       45deg,
       transparent 0,
       transparent 2px,
-      ${props => props.theme.background} 2px,
-      ${props => props.theme.background} 4px
+      ${(props) => props.theme.background} 2px,
+      ${(props) => props.theme.background} 4px
     );
     background-clip: text;
     -webkit-background-clip: text;
@@ -129,8 +129,8 @@ export const ContentTitle = styled.div`
       135deg,
       transparent 0,
       transparent 2px,
-      ${props => props.theme.background} 2px,
-      ${props => props.theme.background} 4px
+      ${(props) => props.theme.background} 2px,
+      ${(props) => props.theme.background} 4px
     );
     background-clip: text;
     -webkit-background-clip: text;
@@ -151,9 +151,10 @@ export const ContentTitle = styled.div`
 `
 
 export const Content = styled.h2`
-  font-size: clamp(1.4em, 1vw + .8rem, 2.1rem);
+  font-size: clamp(1.2em, 1vw + 0.8rem, 2.1rem);
   font-weight: 400;
-  color: ${props => props.theme.text};
+  color: ${(props) => props.theme.text};
+  line-height: 1.5;
   &:last-of-type {
     margin-bottom: 25%;
   }
@@ -166,10 +167,9 @@ export const Content = styled.h2`
 `
 
 export const HomeFeaturedSection = styled(motion.div)`
-  margin-bottom: 15%;
+  margin: 15vh 0;
   position: relative;
   a {
-    margin-bottom: 15%;
     position: relative;
     display: block;
   }
@@ -179,8 +179,10 @@ export const FeaturedContent = styled(motion.div)`
   height: 480px;
   width: 100%;
   box-sizing: border-box;
-  color: ${props => props.theme.text};
+  color: ${(props) => props.theme.text};
   position: relative;
+  z-index: 9;
+  margin-bottom: 20%;
   h3 {
     font-size: 1.2rem;
     position: absolute;
@@ -198,7 +200,7 @@ export const FeaturedContent = styled(motion.div)`
     line-height: 1;
     font-weight: 900;
     margin: 0;
-    color: ${props => props.theme.text};
+    color: ${(props) => props.theme.text};
     @media only screen and (min-width: 991px) {
       bottom: -142px;
       font-size: 7rem;
@@ -216,7 +218,7 @@ export const FeaturedContent = styled(motion.div)`
         left: -48px;
         width: 108px;
         path {
-          fill: ${props => props.theme.text};
+          fill: ${(props) => props.theme.text};
         }
       }
     }
@@ -233,7 +235,6 @@ export const FeaturedContent = styled(motion.div)`
 
 export const FeaturedProject = styled.div`
   position: absolute;
-  z-index: -1;
   width: 100%;
   top: 0;
   overflow: hidden;
@@ -252,18 +253,21 @@ export const FeaturedProject = styled.div`
 
 // About
 
+export const HomeAboutSection = styled(motion.div)`
+  margin: 15vh 0;
+`
+
 export const About = styled.div`
-  margin-top: 10%;
   h2 {
     font-size: 2.3rem;
     font-weight: 400;
-    color: ${props => props.theme.text};
+    color: ${(props) => props.theme.text};
   }
   p {
     max-width: 440px;
     line-height: 1.6rem;
     font-size: 1rem;
-    color: ${props => props.theme.text};
+    color: ${(props) => props.theme.text};
   }
   @media only screen and (min-width: 991px) {
     h2 {
@@ -274,12 +278,11 @@ export const About = styled.div`
   }
 `
 
-export const Services = styled.div`
-  margin-top: 10%;
+export const Stack = styled.div`
   h3 {
     font-size: 1.8rem;
     font-weight: 400;
-    color: ${props => props.theme.text};
+    color: ${(props) => props.theme.text};
   }
   @media only screen and (max-width: 991px) {
     width: 100%;
@@ -291,7 +294,7 @@ export const Services = styled.div`
 
 export const AccordionHeader = styled(motion.div)`
   width: 100%;
-  color: ${props => props.theme.accent};
+  color: ${(props) => props.theme.accent};
   display: flex;
   align-items: center;
   font-size: 600;
@@ -307,7 +310,7 @@ export const AccordionIcon = styled.div`
   span {
     width: 16px;
     height: 4px;
-    background: ${props => props.theme.accent};
+    background: ${(props) => props.theme.accent};
     transition: 0.1s ease-in-out;
   }
 `
@@ -318,7 +321,7 @@ export const AccordionContent = styled(motion.div)`
   span {
     margin: 0.5rem;
     font-size: 1rem;
-    color: ${props => props.theme.text};
+    color: ${(props) => props.theme.text};
     display: block;
     font-weight: 300;
   }

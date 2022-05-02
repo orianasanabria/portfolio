@@ -2,17 +2,16 @@ import styled from "styled-components"
 import { css } from "styled-components"
 
 export const FooterNav = styled.div`
-  height: 150px;
-  margin-top: 10%;
+  margin-bottom: 10vh;
 `
 
 export const FooterContent = styled.div`
-  color: ${props => props.theme.accent};
+  color: ${(props) => props.theme.accent};
   font-size: 1.2rem;
   font-weight: 600;
   line-height: 0.5rem;
   flex: 1;
-  ${props =>
+  ${(props) =>
     props.wider &&
     css`
       flex: 2;
@@ -28,11 +27,11 @@ export const FooterSocial = styled.div`
     width: 24px;
     height: 24px;
     padding: 8px;
-    color: ${props => props.theme.text};
+    color: ${(props) => props.theme.text};
     transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
     &:hover {
       transform: translateY(-3px);
-      color: ${props => props.theme.accent};
+      color: ${(props) => props.theme.accent};
     }
     svg {
       width: 100%;

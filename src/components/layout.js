@@ -30,7 +30,6 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     background: ${props => props.theme.background};
-    overflow-x: hidden;
     &::-webkit-scrollbar {
       display: none;
     }
