@@ -18,8 +18,7 @@ const Footer = ({ onCursor }) => {
             <p>orianasanabria2@gmail.com</p>
           </FooterContent>
           <FooterContent wider>
-            <p>Based in Santiago,</p>
-            <p>Chile</p>
+            <p>Santiago, Chile</p>
           </FooterContent>
           <FooterSocial>
             <a
