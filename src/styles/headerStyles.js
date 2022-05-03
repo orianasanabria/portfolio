@@ -32,7 +32,7 @@ export const LangButton = styled.button`
   padding: 1rem;
   background-color: transparent;
   color: ${(props) => props.theme.text};
-  transition: color .2s ease-in-out;
+  transition: color 0.2s ease-in-out;
   &:hover {
     color: ${(props) => props.theme.accent};
   }
@@ -54,20 +54,26 @@ export const LangButton = styled.button`
 `
 
 export const Logo = styled.div`
+  display: flex;
+  align-items: center;
+
   a {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 800;
     color: ${(props) => props.theme.text};
   }
 
   span {
-    height: 1rem;
-    width: 1rem;
-    background: ${(props) => props.theme.accent};
-    margin: 0 4px;
-    border-radius: 100%;
+    height: 1.5rem;
+    width: 1.5rem;
+    margin: 5px;
     display: inline-block;
-    position: relative;
-    bottom: 2px;
+    &.lightMode {
+      height: 1.8rem;
+      width: 1.8rem;
+    }
+    svg path {
+      fill: ${(props) => props.theme.accent};
+    }
   }
 `

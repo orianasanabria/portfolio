@@ -12,6 +12,8 @@ import {
 } from "../context/globalContext"
 import { useElementPosition } from "../context/useElementPosition"
 
+import { LightMode, DarkMode } from "../assets/svg/social-icons"
+
 const Header = ({
   onCursor,
   setToggleMenu,
@@ -76,7 +78,10 @@ const Header = ({
               onMouseEnter={() => onCursor("pointer")}
               onMouseLeave={onCursor}
               onClick={toggleTheme}
-            ></span>
+              className={currentTheme === "dark" ? "darkMode" : "lightMode"}
+            >
+              {currentTheme === "dark" ? <DarkMode /> : <LightMode />}
+            </span>
             <a href="/">S</a>
           </Logo>
           <Flex>
