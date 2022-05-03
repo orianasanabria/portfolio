@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react"
 import { useInView } from "react-intersection-observer"
 import { useAnimation } from "framer-motion"
-
 import { motion } from "framer-motion"
+import { useTranslation } from "react-i18next"
+
+// Styled Components
 import { Container, Flex } from "../../styles/globalStyles"
 import {
   HomeFeaturedSection,
   FeaturedContent,
   FeaturedProject,
 } from "../../styles/homeStyles"
+
+// Hooks
 import { useIsSmall } from "../../hooks/useMediaQuery"
 
 const HomeFeatured = ({ onCursor }) => {
+  const {t} = useTranslation("global")
   const [hovered, setHovered] = useState(false)
   const animation = useAnimation()
   const [featuredRef, inView] = useInView({
@@ -59,7 +64,7 @@ const HomeFeatured = ({ onCursor }) => {
             onMouseLeave={onCursor}
           >
             <Flex spaceBetween>
-              <h3>Featured Project</h3>
+              <h3>{t("home.featuredSection.type")}</h3>
               <motion.div
                 animate={{ opacity: hovered ? 1 : 0 }}
                 transition={{ duration: 0.6, ease: [0.6, 0.05, -0.01, 0.9] }}

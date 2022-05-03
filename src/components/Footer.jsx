@@ -1,8 +1,11 @@
 import React from "react"
 
+// Styled Compontents
 import { Container, Flex } from "../styles/globalStyles"
-import { Linkedin, Github } from "../assets/svg/social-icons"
 import { FooterNav, FooterContent, FooterSocial } from "../styles/footerStyles"
+
+// Assets
+import { Linkedin, Github } from "../assets/svg/social-icons"
 
 const Footer = ({ onCursor }) => {
 

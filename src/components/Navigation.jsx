@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Linkedin, Github } from "../assets/svg/social-icons"
+import { useTranslation } from "react-i18next"
 
+// Styled Compontents
 import { Container, Flex } from "../styles/globalStyles"
 import {
   Nav,
@@ -12,6 +13,9 @@ import {
   NavImages,
 } from "../styles/navigationStyles"
 import { FooterContent, FooterSocial } from "../styles/footerStyles"
+
+// Assets
+import { Linkedin, Github } from "../assets/svg/social-icons"
 
 const navRoutes = [
   {
@@ -29,6 +33,8 @@ const navRoutes = [
 ]
 
 const Navigation = ({ toggleMenu, setToggleMenu, onCursor }) => {
+  const { t } = useTranslation("global")
+
   const [revealImage, setRevealImage] = useState({
     show: false,
     image: "spotify-profile-bg.jpg",
@@ -48,7 +54,7 @@ const Navigation = ({ toggleMenu, setToggleMenu, onCursor }) => {
             <Container>
               <NavHeader>
                 <Flex spaceBetween noHeight>
-                  <h2>Projects</h2>
+                  <h2>{t("home.cta.title")}</h2>
                   <CloseNav
                     onClick={() => setToggleMenu(!toggleMenu)}
                     onMouseEnter={() => onCursor("pointer")}
@@ -63,7 +69,7 @@ const Navigation = ({ toggleMenu, setToggleMenu, onCursor }) => {
               </NavHeader>
               <NavList>
                 <ul>
-                  {navRoutes.map(route => (
+                  {navRoutes.map((route) => (
                     <motion.li
                       onHoverStart={() =>
                         setRevealImage({
@@ -148,10 +154,7 @@ const Navigation = ({ toggleMenu, setToggleMenu, onCursor }) => {
                     <AnimatePresence initial={false} exitBeforeEnter>
                       <motion.img
                         key={revealImage.key}
-                        src={
-                          require(`../assets/img/${revealImage.image}`)
-                            
-                        }
+                        src={require(`../assets/img/${revealImage.image}`)}
                         alt="project image"
                         initial={{ opacity: 0 }}
                         exit={{ opacity: 0 }}

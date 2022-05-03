@@ -8,10 +8,10 @@ export const Banner = styled.div`
   position: relative;
 `
 
-export const Video = styled.div`
+export const Image = styled.div`
   height: 100%;
   width: 100%;
-  video {
+  Image {
     object-fit: cover;
   }
 `
@@ -39,10 +39,12 @@ export const BannerGrid = styled(motion.div)`
   }
 `
 export const BannerTitle = styled(motion.h1)`
-  grid-column: 2/6;
+  grid-column: 1/6;
   grid-row: 2/3;
+  margin: 0 1rem;
   color: ${(props) => props.theme.text};
   @media only screen and (min-width: 768px) {
+    grid-column: 2/6;
     grid-row: 4;
     grid-column: 2/8;
   }
@@ -75,10 +77,13 @@ export const BannerText = styled(motion.p)`
   grid-column: 11/12;
 `
 export const ScrollArrow = styled(motion.span)`
-  grid-column: 2/3;
+  grid-column: 1/3;
   grid-row: 5/6;
   svg path {
     fill: ${(props) => props.theme.text};
+  }
+  @media only screen and (min-width: 768px) {
+    grid-column: 2/3;
   }
 `
 

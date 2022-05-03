@@ -1,17 +1,19 @@
 import React, { useState } from "react"
 import Header from "./Header"
+import CustomCursor from "./CustomCursor"
+import Navigation from "./Navigation"
+import Footer from "./Footer"
+import ProjectButton from "./ProjectButton"
+
 // Styled Components
 import { createGlobalStyle, ThemeProvider } from "styled-components"
 import { normalize } from "styled-normalize"
+
 // Context
 import {
   useGlobalStateContext,
   useGlobalDispatchContext,
 } from "../context/globalContext"
-import CustomCursor from "./CustomCursor"
-import Navigation from "./Navigation"
-import Footer from "./Footer"
-import ProjectButton from "./ProjectButton"
 
 const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -29,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
-    background: ${props => props.theme.background};
+    background: ${(props) => props.theme.background};
     &::-webkit-scrollbar {
       display: none;
     }
@@ -37,7 +39,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Montserrat', sans-serif;
-    background: ${props => props.theme.background};
+    background: ${(props) => props.theme.background};
     overscroll-behavior: none;
     overflow-x: hidden;
   }
@@ -68,7 +70,7 @@ const Layout = ({ children }) => {
     top: `${hamburgerPosition.y}px`,
   }
 
-  const onCursor = cursorType => {
+  const onCursor = (cursorType) => {
     cursorType = (cursorStyles.includes(cursorType) && cursorType) || false
     dispatch({
       type: "CURSOR_TYPE",
@@ -89,12 +91,12 @@ const Layout = ({ children }) => {
           onCursor={onCursor}
           toggleMenu={toggleMenu}
           setToggleMenu={setToggleMenu}
-          />
+        />
         <Navigation
           onCursor={onCursor}
           toggleMenu={toggleMenu}
           setToggleMenu={setToggleMenu}
-          />
+        />
         <main>{children}</main>
         <ProjectButton
           onCursor={onCursor}

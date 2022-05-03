@@ -1,0 +1,24 @@
+{
+  "home": {
+    "cta": {
+      "action": "Ver Más",
+      "title": "Proyectos"
+    },
+    "bannerSection": {
+      "hello": "Hola, soy Oriana",
+      "description": "Desarrolladora creativa actualmente especializandose en construir (y ocasionalmente diseñar) experiencias de usuario intuitivas e interactivas."
+    },
+    "contentSection": {
+      "introduction": "Soy Desarrolladora Front-End ubicada en Chile.",
+      "description": "La combinación de mi pasión por el código, diseño e interacción me posiciona en un lugar único en el mundo del desarrollo de software. Soy una persona organizada, con excelentes habilidades de resolución de problemas y empleada independiente con gran atención al detalle."
+    },
+    "featuredSection": {
+      "type": "Proyecto Destacado"
+    },
+    "aboutSection": {
+      "title": "Habilidades y Experiencia",
+      "description-one": "He tenido la oportunidad de trabajar para agencias de e-commerce y marketing, colaborando con personas talentosas para crear productos digitales para uso individual y comercial.",
+      "description-two": "Mi enfoque principal actualmente es crear productos innovadores y dinámicos al igual que experiencias digitales memorables en PropulsoW para una variedad de clientes."
+    }
+  }
+}

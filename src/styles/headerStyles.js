@@ -22,21 +22,48 @@ export const Menu = styled.div`
       height: 8px;
       display: block;
       margin: 6px;
-      background-color: ${props => props.theme.text};
+      background-color: ${(props) => props.theme.text};
     }
   }
 `
+
+export const LangButton = styled.button`
+  border: none;
+  padding: 1rem;
+  background-color: transparent;
+  color: ${(props) => props.theme.text};
+  transition: color .2s ease-in-out;
+  &:hover {
+    color: ${(props) => props.theme.accent};
+  }
+  &:last-of-type {
+    margin-right: 1rem;
+  }
+  &.active {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: ${(props) => props.theme.accent};
+    }
+  }
+`
+
 export const Logo = styled.div`
   a {
     font-size: 1.8rem;
     font-weight: 800;
-    color: ${props => props.theme.text};
+    color: ${(props) => props.theme.text};
   }
 
   span {
     height: 1rem;
     width: 1rem;
-    background: ${props => props.theme.accent};
+    background: ${(props) => props.theme.accent};
     margin: 0 4px;
     border-radius: 100%;
     display: inline-block;

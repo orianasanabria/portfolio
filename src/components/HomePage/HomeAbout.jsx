@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { motion, useAnimation } from "framer-motion"
 import { useInView } from "react-intersection-observer"
+import { useTranslation } from "react-i18next"
+
+// Styled Components
 import { Container, Flex } from "../../styles/globalStyles"
 import {
   HomeAboutSection,
@@ -11,11 +14,16 @@ import {
   AccordionContent,
 } from "../../styles/homeStyles"
 
-import { accordionIds } from "../../data/dataHome"
+// Context
 import { useGlobalStateContext } from "../../context/globalContext"
+
+// Hooks & Data
+import { accordionIds } from "../../data/dataHome"
 import { useIsSmall } from "../../hooks/useMediaQuery"
 
 const HomeAbout = ({ onCursor }) => {
+  const {t} = useTranslation("global")
+
   const [expanded, setExpanded] = useState(0)
   const isSmall = useIsSmall()
 
@@ -54,16 +62,9 @@ const HomeAbout = ({ onCursor }) => {
       <Container>
         <Flex responsiveDirection alignTop>
           <About>
-            <h2>Skills & Experience</h2>
-            <p>
-              I've had the opportunity of working for marketing and e-commerce
-              agencies and collaborated with talented people to create web
-              products for both business and consumer use.
-            </p>
-            <p>
-              My main focus these days is building innovative, dynamic products
-              and digital experiences at PropulsoW for a variety of clients.
-            </p>
+            <h2>{t("home.aboutSection.title")}</h2>
+            <p>{t("home.aboutSection.description-one")}</p>
+            <p>{t("home.aboutSection.description-two")}</p>
           </About>
           <Stack>
             <h3>Stack</h3>

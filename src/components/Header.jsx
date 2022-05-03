@@ -1,13 +1,15 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
+import { useTranslation } from "react-i18next"
+
 // Styled Components
-import { HeaderNav, Menu, Logo } from "../styles/headerStyles"
+import { HeaderNav, Menu, Logo, LangButton } from "../styles/headerStyles"
 import { Container, Flex } from "../styles/globalStyles"
+
 // Context
 import {
   useGlobalStateContext,
   useGlobalDispatchContext,
 } from "../context/globalContext"
-
 import { useElementPosition } from "../context/useElementPosition"
 
 const Header = ({
@@ -16,6 +18,8 @@ const Header = ({
   toggleMenu,
   setHamburgerPosition,
 }) => {
+  const { i18n } = useTranslation("global")
+
   const { currentTheme } = useGlobalStateContext()
   const dispatch = useGlobalDispatchContext()
   const hamburger = useRef(null)
@@ -44,8 +48,16 @@ const Header = ({
   }
 
   useEffect(() => {
-    window.localStorage.setItem("theme", currentTheme)
+    localStorage.setItem("theme", currentTheme)
   }, [currentTheme])
+
+  const [activeLang, setActiveLang] = useState(localStorage.getItem("lang"))
+
+  const changeLang = (lang) => {
+    setActiveLang(lang)
+    localStorage.setItem("lang", lang)
+    i18n.changeLanguage(lang)
+  }
 
   return (
     <HeaderNav
@@ -67,17 +79,35 @@ const Header = ({
             ></span>
             <a href="/">S</a>
           </Logo>
-          <Menu
-            ref={hamburger}
-            onMouseEnter={menuHover}
-            onMouseLeave={onCursor}
-            onClick={() => setToggleMenu(!toggleMenu)}
-          >
-            <button>
-              <span></span>
-              <span></span>
-            </button>
-          </Menu>
+          <Flex>
+            <LangButton
+              onMouseEnter={() => onCursor("pointer")}
+              onMouseLeave={onCursor}
+              onClick={() => changeLang("es")}
+              className={activeLang === "es" ? "active" : null}
+            >
+              ES
+            </LangButton>
+            <LangButton
+              onMouseEnter={() => onCursor("pointer")}
+              onMouseLeave={onCursor}
+              onClick={() => changeLang("en")}
+              className={activeLang === "en" ? "active" : null}
+            >
+              EN
+            </LangButton>
+            <Menu
+              ref={hamburger}
+              onMouseEnter={menuHover}
+              onMouseLeave={onCursor}
+              onClick={() => setToggleMenu(!toggleMenu)}
+            >
+              <button>
+                <span></span>
+                <span></span>
+              </button>
+            </Menu>
+          </Flex>
         </Flex>
       </Container>
     </HeaderNav>
@@ -85,4 +115,3 @@ const Header = ({
 }
 
 export default Header
-

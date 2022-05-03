@@ -1,5 +1,5 @@
 import React from "react"
-import Layout from "./components/layout"
+import Layout from "./components/Layout"
 import HomeBanner from "./components/HomePage/HomeBanner"
 import HomeContent from "./components/HomePage/HomeContent"
 

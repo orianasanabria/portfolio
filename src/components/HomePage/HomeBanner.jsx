@@ -1,8 +1,10 @@
 import React, { useRef, useEffect } from "react"
+import { useTranslation } from "react-i18next"
 
+// Styled Components
 import {
   Banner,
-  Video,
+  Image,
   BannerTitle,
   Canvas,
   Headline,
@@ -11,10 +13,14 @@ import {
   BannerText,
 } from "../../styles/homeStyles"
 
+// Context
 import { useGlobalStateContext } from "../../context/globalContext"
+
+// Hooks
 import { useWindowSize } from "../../hooks/useWindowSize"
 
 const HomeBanner = ({ onCursor }) => {
+  const { t } = useTranslation("global")
   let canvas = useRef(null)
   const size = useWindowSize()
   const { currentTheme } = useGlobalStateContext()
@@ -34,17 +40,17 @@ const HomeBanner = ({ onCursor }) => {
     renderingCtx.fillStyle = currentTheme === "dark" ? "#000" : "#fff"
     renderingCtx.fillRect(0, 0, size.width, size.height)
 
-    renderingElement.addEventListener("mouseover", e => {
+    renderingElement.addEventListener("mouseover", (e) => {
       moving = true
       lastX = e.pageX - renderingElement.offsetLeft
       lastY = e.pageY - renderingElement.offsetTop
     })
-    renderingElement.addEventListener("mouseup", e => {
+    renderingElement.addEventListener("mouseup", (e) => {
       moving = false
       lastX = e.pageX - renderingElement.offsetLeft
       lastY = e.pageY - renderingElement.offsetTop
     })
-    renderingElement.addEventListener("mousemove", e => {
+    renderingElement.addEventListener("mousemove", (e) => {
       if (moving) {
         drawingCtx.globalCompositeOperation = "source-over"
         renderingCtx.globalCompositeOperation = "destination-out"
@@ -100,14 +106,14 @@ const HomeBanner = ({ onCursor }) => {
 
   return (
     <Banner>
-      <Video>
+      <Image>
         <img
           height="100%"
           width="100%"
           src={require("../../assets/img/bg1.gif")}
           alt="background gif"
         />
-      </Video>
+      </Image>
       <Canvas
         height={size.height}
         width={size.width}
@@ -118,18 +124,17 @@ const HomeBanner = ({ onCursor }) => {
       <BannerGrid variants={parent} initial="initial" animate="animate">
         <BannerTitle>
           <Headline className="name" variants={child} transition={transition}>
-            Hi, I'm Oriana
+            {t("home.bannerSection.hello")}
           </Headline>
           <Headline variants={child} transition={slowerTransition}>
-            Creative
+            Front End
           </Headline>
           <Headline variants={child} transition={slowerTransition}>
             Developer
           </Headline>
         </BannerTitle>
         <BannerText variants={child} transition={transition}>
-          I'm a Front-End developer specializing in creating (and occasionally
-          designing) intuitive and dynamic user experiences.
+          {t("home.bannerSection.description")}
         </BannerText>
         <ScrollArrow variants={arrow} transition={transition}>
           <svg width="130px" viewBox="0 0 490 490">

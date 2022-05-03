@@ -1,6 +1,9 @@
 import React, { useEffect } from "react"
 import { useInView } from "react-intersection-observer"
 import { useAnimation } from "framer-motion"
+import { useTranslation } from "react-i18next"
+
+// Styled Components
 
 import { Container } from "../../styles/globalStyles"
 import {
@@ -8,9 +11,12 @@ import {
   Content,
   ContentTitle,
 } from "../../styles/homeStyles"
+
+// Hooks
 import { useIsSmall } from "../../hooks/useMediaQuery"
 
 const HomeContent = () => {
+  const {t} = useTranslation("global")
   const animation = useAnimation()
   const [contentRef, inView] = useInView({
     triggerOnce: true,
@@ -48,12 +54,9 @@ const HomeContent = () => {
         <ContentTitle>
           <h2>Oriana S.</h2>
         </ContentTitle>
-        <Content>I'm a Front-End Developer located in Chile.</Content>
+        <Content>{t("home.contentSection.introduction")}</Content>
         <Content>
-          The combination of my passion for code, design & interaction positions
-          me in a unique place in the software development world. I'm a well-organised
-          person, problem solver, independent employee with high attention to
-          detail.
+        {t("home.contentSection.description")}
         </Content>
       </Container>
     </HomeContentSection>
