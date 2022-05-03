@@ -26,37 +26,32 @@ export const Canvas = styled.canvas`
 export const BannerGrid = styled(motion.div)`
   pointer-events: none;
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  margin-bottom: 1rem;
   @media only screen and (min-width: 991px) {
-    grid-column-gap: 25px;
     grid-template-columns: repeat(12, 1fr);
   }
 `
 export const BannerTitle = styled(motion.h1)`
   grid-column: 1/6;
-  grid-row: 2/3;
+  grid-row: 1;
   margin: 0 1rem;
   color: ${(props) => props.theme.text};
   @media only screen and (min-width: 768px) {
-    grid-column: 2/6;
-    grid-row: 4;
     grid-column: 2/8;
-  }
-  @media only screen and (min-width: 1400px) {
-    grid-row: 2/3;
   }
 `
 export const Headline = styled(motion.span)`
   text-transform: uppercase;
   display: block;
   font-weight: 800;
-  font-size: clamp(3rem, 5vw + 1rem, 7rem);
+  font-size: clamp(2.9rem, 5vw + 1rem, 7rem);
   &.name {
     font-size: 2rem;
     font-weight: 100;
@@ -70,15 +65,17 @@ export const BannerText = styled(motion.p)`
   @media only screen and (max-width: 991px) {
     display: none;
   }
-  grid-row: 4/5;
+  grid-row: 2;
   line-height: 1.3;
   font-weight: 600;
   color: ${(props) => props.theme.text};
   grid-column: 11/12;
 `
 export const ScrollArrow = styled(motion.span)`
+  display: flex;
+  align-items: flex-end;
   grid-column: 1/3;
-  grid-row: 5/6;
+  grid-row: 2;
   svg path {
     fill: ${(props) => props.theme.text};
   }
