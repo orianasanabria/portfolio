@@ -12,23 +12,19 @@ import {
   ContentTitle,
 } from "../../styles/homeStyles"
 
-// Hooks
-import { useIsSmall } from "../../hooks/useMediaQuery"
-
 const HomeContent = () => {
   const {t} = useTranslation("global")
   const animation = useAnimation()
   const [contentRef, inView] = useInView({
     triggerOnce: true,
-    rootMargin: "-300px",
+    rootMargin: "-150px",
   })
-  const isSmall = useIsSmall()
 
   useEffect(() => {
-    if (inView || isSmall) {
+    if (inView) {
       animation.start("visible")
     }
-  }, [animation, inView, isSmall])
+  }, [animation, inView])
 
   return (
     <HomeContentSection

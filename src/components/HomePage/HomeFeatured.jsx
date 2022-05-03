@@ -12,24 +12,20 @@ import {
   FeaturedProject,
 } from "../../styles/homeStyles"
 
-// Hooks
-import { useIsSmall } from "../../hooks/useMediaQuery"
-
 const HomeFeatured = ({ onCursor }) => {
   const {t} = useTranslation("global")
   const [hovered, setHovered] = useState(false)
   const animation = useAnimation()
   const [featuredRef, inView] = useInView({
     triggerOnce: true,
-    rootMargin: "-300px",
+    rootMargin: "-150px",
   })
-  const isSmall = useIsSmall()
 
   useEffect(() => {
-    if (inView || isSmall) {
+    if (inView) {
       animation.start("visible")
     }
-  }, [animation, inView, isSmall])
+  }, [animation, inView])
 
   return (
     <HomeFeaturedSection

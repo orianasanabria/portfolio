@@ -19,25 +19,23 @@ import { useGlobalStateContext } from "../../context/globalContext"
 
 // Hooks & Data
 import { accordionIds } from "../../data/dataHome"
-import { useIsSmall } from "../../hooks/useMediaQuery"
 
 const HomeAbout = ({ onCursor }) => {
   const {t} = useTranslation("global")
 
   const [expanded, setExpanded] = useState(0)
-  const isSmall = useIsSmall()
 
   const animation = useAnimation()
   const [aboutRef, inView] = useInView({
     triggerOnce: true,
-    rootMargin: "-300px",
+    rootMargin: "-150px",
   })
 
   useEffect(() => {
-    if (inView || isSmall) {
+    if (inView) {
       animation.start("visible")
     }
-  }, [animation, inView, isSmall])
+  }, [animation, inView])
 
   return (
     <HomeAboutSection
